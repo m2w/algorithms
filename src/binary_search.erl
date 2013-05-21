@@ -29,7 +29,7 @@ search(Val, L) ->
 -include_lib("eunit/include/eunit.hrl").
 
 search_test() ->
-    {"fibonacci search finds elements in a sorted list",
+    {"binary search finds elements in a sorted list",
      [?assertEqual(binary_search:search(189, lists:seq(1,300)), match),
       ?assertEqual(binary_search:search(731, lists:seq(1, 1032, 9)), nomatch),
       ?assertEqual(binary_search:search(100, lists:seq(32, 53, 7)), nomatch),
