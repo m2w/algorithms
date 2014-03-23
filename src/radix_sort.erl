@@ -56,7 +56,7 @@ digit(X, Radix, Digit) ->
 fibonacci_search_test() ->
     {"radix sort sorts a list of unsorted integers",
      [?assertEqual(radix_sort:lsd([139,2,123,8234,72392,128,1], 10),
-		   [1,2,123,128,139,8234,72392]),
+                   [1,2,123,128,139,8234,72392]),
      ?assertEqual(radix_sort:lsd([2, 100, 31, 2, 109], 2), [2, 2, 31, 100, 109]),
      ?assertEqual(radix_sort:lsd([], 10), []),
      ?assertEqual(radix_sort:lsd([10], 10), [10])]}.

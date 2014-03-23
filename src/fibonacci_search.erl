@@ -47,19 +47,19 @@ fib_search(_List, _Len, _Elem, []) ->
     {error, not_found};
 fib_search(List, _Len, Elem, [LastElem]) ->
     case lists:nth(LastElem, List) of
-	Hit when Hit == Elem ->
-	    found;
-	_X ->
-	    {error, not_found}
+        Hit when Hit == Elem ->
+            found;
+        _X ->
+            {error, not_found}
     end;
 fib_search(List, Len, Elem, [Prev, Next|Fibs]) when Next =< Len ->
     case lists:nth(Next, List) of
-	Hit when Hit == Elem ->
-	    found;
-	X when X > Elem ->     % target element is smaller than current element
-	    fib_search(lists:sublist(List, Prev, Next-Prev), Elem);
-	_X ->                  % target element is larger than current element
-	    fib_search(List, Len, Elem, [Next|Fibs])
+        Hit when Hit == Elem ->
+            found;
+        X when X > Elem ->     % target element is smaller than current element
+            fib_search(lists:sublist(List, Prev, Next-Prev), Elem);
+        _X ->                  % target element is larger than current element
+            fib_search(List, Len, Elem, [Next|Fibs])
     end;
 fib_search(List, Len, Elem, [Prev, _Next|_Fibs]) ->
     fib_search(lists:sublist(List, Prev, Len), Elem).

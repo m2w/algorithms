@@ -5,7 +5,7 @@
 % it was an interesting exercise.
 
 -export([bubblesort/1,
-	 cocktailsort/1]).
+         cocktailsort/1]).
 
 -type sorted_list() :: list().
 -type unsorted_list() :: list().
@@ -46,25 +46,25 @@ bubblesort(L, Res) ->
 %% and prepends the largest element to another accumulator. Returns both accumulators
 %% combined.
 -spec cocktailsort(unsorted_list(), sorted_list(), sorted_list()) ->
-			  sorted_list().
+                          sorted_list().
 cocktailsort([], Low, High) ->
     Low ++ High;
 cocktailsort(L, Low, High) ->
     LR = bsort(L, []), % left to right
     case length(LR) of
-	1 ->
-	    cocktailsort([], Low ++ [hd(LR)], High);
-	_Longer ->
-	    RL = revsort(LR, []),
-	    Len = length(RL),
-	    cocktailsort(lists:sublist(RL, 2, Len-2), Low ++ [hd(RL)], [lists:last(LR)|High])
+        1 ->
+            cocktailsort([], Low ++ [hd(LR)], High);
+        _Longer ->
+            RL = revsort(LR, []),
+            Len = length(RL),
+            cocktailsort(lists:sublist(RL, 2, Len-2), Low ++ [hd(RL)], [lists:last(LR)|High])
     end.
 
 %% @private
 %% @doc Iterates through an unsorted list, checking whether the current element is
 %% larger than the next, swapping their position in the accumulator if that is the case.
 -spec bsort(unsorted_list(), list()) ->
-		   list().
+                   list().
 bsort([], Acc) ->
     Acc;
 bsort([H,TH|T], Acc) when H > TH ->
@@ -85,9 +85,9 @@ revsort(L, Acc) ->
     Last = lists:last(L),
     PrevToLast = lists:nth(Len-1, L), % care, nth is 1 based
     if Last < PrevToLast ->
-	    revsort(lists:sublist(L, Len-2), [Last|[PrevToLast|Acc]]);
-	true ->
-	    revsort(lists:sublist(L, Len-1), [Last|Acc])
+            revsort(lists:sublist(L, Len-2), [Last|[PrevToLast|Acc]]);
+        true ->
+            revsort(lists:sublist(L, Len-1), [Last|Acc])
     end.
 
 %%---------------------------------------------------------------

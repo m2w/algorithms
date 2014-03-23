@@ -17,9 +17,9 @@ search(_, [_X]) -> nomatch;
 search(Val, L) ->
     Mid = length(L) div 2,
     case lists:nth(Mid, L) of
-	X when Val =:= X -> match;
-	X when Val > X -> search(Val, lists:nthtail(Mid, L));
-	_ -> search(Val, lists:sublist(L, Mid))
+        X when Val =:= X -> match;
+        X when Val > X -> search(Val, lists:nthtail(Mid, L));
+        _ -> search(Val, lists:sublist(L, Mid))
     end.
 
 %%---------------------------------------------------------------
